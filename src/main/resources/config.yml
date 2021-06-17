@@ -1,0 +1,21 @@
+# AlternativeAEF config
+
+# Patch future/rusher packet fly
+PreventPacketFly: true
+# Max teleport packets per 10 seconds, this is how the packet fly works, 25 is usually fine, if you go lower players may get stuck.
+MaxTeleportPacketsPer10Seconds: 25
+LogPacketFlyEvents: false
+
+# Patches the future/rusherhack/kamiblue 2b2t elytra fly exploit
+PatchPacketElytraFly: true
+# Recommended to not go lower as there could be false positives.
+MaxElytraOpensPer10Seconds: 25 # Will only allow players to go about 85km/h on kami blue, and won't even work on rusherhack.
+
+# Patch futureclient/rusherhack boat fly exploit
+# This does not affect boats at all! Even on land.
+BoatflyPatch: true
+MaxEntityPacketsPer10Seconds: 15
+LogBoatFlyEvents: true
+
+PreventCraftingRecipeLagExploit: true
+CraftingRecipeDelay: 5 # in ticks

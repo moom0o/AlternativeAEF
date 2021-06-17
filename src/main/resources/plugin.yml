@@ -1,0 +1,5 @@
+name: AlternativeAEF
+version: ${project.version}
+main: me.moomoo.alternativeaef.Main
+description: ${project.description}
+depend: [ ProtocolLib ]

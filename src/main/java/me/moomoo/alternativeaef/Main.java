@@ -1,5 +1,6 @@
 package me.moomoo.alternativeaef;
 
+import me.moomoo.alternativeaef.patches.Burrow;
 import me.moomoo.alternativeaef.patches.Elytra;
 import me.moomoo.alternativeaef.patches.ProtocolLib;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ public final class Main extends JavaPlugin implements Listener {
         pluginManager = getServer().getPluginManager();
         log.info("Registering events");
         register(
-                new Elytra(this)
+                new Elytra(this), new Burrow(this)
         );
         ProtocolLib.protocolLibWrapper(this);
         log.info("Registering events finished");

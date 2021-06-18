@@ -1,6 +1,7 @@
 [![Discord Mine](https://img.shields.io/discord/807380182729228298?label=chat&logo=discord&logoColor=white)](https://discord.gg/VYZuWRMQ8u)
 
 # AlternativeAEF
+
 AnarchyExploitFixes for people who don't want everything
 
 ## Requirements
@@ -49,9 +50,14 @@ BoatflyPatch: true
 MaxEntityPacketsPer10Seconds: 15
 LogBoatFlyEvents: true
 
+PreventBurrow: true # Preliminary burrow patch, please test. Makes players take damage every time they move when their feet are in a block
+BurrowDamageWhenMoving: 1 # Half a heart of damage every time you move.
+
 PreventCraftingRecipeLagExploit: true
 CraftingRecipeDelay: 5 # in ticks
 ```
+
 </details>
 
-More information can be found on the main plugin repo. [https://github.com/moom0o/AnarchyExploitFixes](https://github.com/moom0o/AnarchyExploitFixes)
+More information can be found on the main plugin
+repo. [https://github.com/moom0o/AnarchyExploitFixes](https://github.com/moom0o/AnarchyExploitFixes)

@@ -52,6 +52,7 @@ LogBoatFlyEvents: true
 
 PreventBurrow: true # Preliminary burrow patch, please test. Makes players take damage every time they move when their feet are in a block
 BurrowDamageWhenMoving: 1 # Half a heart of damage every time you move.
+TeleportBurrow: true #Teleport player above block
 
 PreventCraftingRecipeLagExploit: true
 CraftingRecipeDelay: 5 # in ticks

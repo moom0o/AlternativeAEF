@@ -4,8 +4,6 @@ import me.moomoo.alternativeaef.Main;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -26,8 +24,7 @@ public class Burrow implements Listener {
             double yy = l.getY();
             int z = l.getBlockZ();
             Material b = evt.getPlayer().getLocation().getWorld().getBlockAt(x, y, z).getType();
-            Block bb = evt.getPlayer().getLocation().getWorld().getBlockAt(x, y, z);
-            if (!b.equals(Material.AIR) && (b.isOccluding() || b.equals(Material.ANVIL)) && !b.equals(Material.SOUL_SAND) && !(bb instanceof FallingBlock)) {
+            if (!b.equals(Material.AIR) && (b.isOccluding() || b.equals(Material.ANVIL)) && !b.equals(Material.SOUL_SAND) && !isGravityBlock(b)) {
                 evt.getPlayer().damage(plugin.getConfig().getInt("BurrowDamageWhenMoving"));
                 if (plugin.getConfig().getBoolean("TeleportBurrow")) {
                     evt.getPlayer().teleport(new Location(l.getWorld(), x, y + 1, z));
@@ -52,6 +49,16 @@ public class Burrow implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    private Boolean isGravityBlock(Material b) {
+        switch (b) {
+            case SAND:
+            case GRAVEL:
+                return true;
+            default:
+                return false;
         }
     }
 }

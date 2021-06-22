@@ -1,8 +1,11 @@
 package me.moomoo.alternativeaef.patches;
 
 import me.moomoo.alternativeaef.Main;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -16,14 +19,15 @@ public class Burrow implements Listener {
 
     @EventHandler
     private void onMove(PlayerMoveEvent evt) {
-        if (plugin.getConfig().getBoolean("PreventBurrow")) {
+        if (plugin.getConfig().getBoolean("PreventBurrow") && evt.getPlayer().getGameMode() != GameMode.SPECTATOR) {
             Location l = evt.getPlayer().getLocation();
             int x = l.getBlockX();
             int y = l.getBlockY();
             double yy = l.getY();
             int z = l.getBlockZ();
             Material b = evt.getPlayer().getLocation().getWorld().getBlockAt(x, y, z).getType();
-            if (!b.equals(Material.AIR) && (b.isOccluding() || b.equals(Material.ANVIL)) && !b.equals(Material.SOUL_SAND)) {
+            Block bb = evt.getPlayer().getLocation().getWorld().getBlockAt(x, y, z);
+            if (!b.equals(Material.AIR) && (b.isOccluding() || b.equals(Material.ANVIL)) && !b.equals(Material.SOUL_SAND) && !(bb instanceof FallingBlock)) {
                 evt.getPlayer().damage(plugin.getConfig().getInt("BurrowDamageWhenMoving"));
                 if (plugin.getConfig().getBoolean("TeleportBurrow")) {
                     evt.getPlayer().teleport(new Location(l.getWorld(), x, y + 1, z));

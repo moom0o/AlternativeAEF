@@ -56,6 +56,12 @@ TeleportBurrow: true #Teleport player above block
 
 PreventCraftingRecipeLagExploit: true
 CraftingRecipeDelay: 5 # in ticks
+
+# DISABLE AT CERTAIN TPS
+Redstone: 16 # Freezes all redstone until tps is above this amount.
+
+KickPlayerIfTemporary: true
+TemporaryKickMessage: "sus"
 ```
 
 </details>

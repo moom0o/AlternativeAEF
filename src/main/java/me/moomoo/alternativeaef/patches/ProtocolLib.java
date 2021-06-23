@@ -22,10 +22,8 @@ public class ProtocolLib {
     public static final Set<String> crafting = new HashSet<>();
     public static final Map<Player, Integer> levels = new HashMap<>();
     public static final Map<Player, Integer> boatLevels = new HashMap<>();
-    private final Main plugin;
 
     private ProtocolLib(Main plugin) {
-        this.plugin = plugin;
     }
 
     public static void protocolLibWrapper(Main plugin) {
@@ -44,6 +42,10 @@ public class ProtocolLib {
                                         crafting.add(event.getPlayer().getName());
                                         Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> crafting.remove(event.getPlayer().getName()), plugin.getConfig().getInt("CraftingRecipeDelay"));
                                     }
+                                }
+                            } else {
+                                if (plugin.getConfig().getBoolean("KickPlayerIfTemporary")) {
+                                    event.getPlayer().kickPlayer(plugin.getConfig().getString("TemporaryKickMessage"));
                                 }
                             }
                         }
@@ -75,6 +77,10 @@ public class ProtocolLib {
                                         }
                                     }
                                 }
+                            } else {
+                                if (plugin.getConfig().getBoolean("KickPlayerIfTemporary")) {
+                                    event.getPlayer().kickPlayer(plugin.getConfig().getString("TemporaryKickMessage"));
+                                }
                             }
                         }
                     });
@@ -103,6 +109,10 @@ public class ProtocolLib {
                                             Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> boatLevels.put(e, boatLevels.get(e) - 1), 200L);
                                         }
                                     }
+                                }
+                            } else {
+                                if (plugin.getConfig().getBoolean("KickPlayerIfTemporary")) {
+                                    event.getPlayer().kickPlayer(plugin.getConfig().getString("TemporaryKickMessage"));
                                 }
                             }
                         }
